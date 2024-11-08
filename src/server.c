@@ -12,6 +12,7 @@
  */
 
 #include "server.h"
+#include "jgwilltale.h"
 #include "monotonic.h"
 #include "cluster.h"
 #include "slowlog.h"
@@ -7263,6 +7264,7 @@ int main(int argc, char **argv) {
     if (background || server.pidfile) createPidFile();
     if (server.set_proc_title) redisSetProcTitle(NULL);
     redisAsciiArt();
+    serverLogRaw(LL_NOTICE,jgwillAsciiArt);
     checkTcpBacklogSettings();
     if (server.cluster_enabled) {
         clusterInit();
